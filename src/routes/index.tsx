@@ -1,24 +1,82 @@
 import { createFileRoute } from "@tanstack/react-router";
+import logo from "@/assets/grid-logo.png.asset.json";
+import { Atmosphere } from "@/components/grid/Atmosphere";
+import { Cursor } from "@/components/grid/Cursor";
+import { Loader } from "@/components/grid/Loader";
+import { Nav } from "@/components/grid/Nav";
+import { Hero } from "@/components/grid/Hero";
+import { About } from "@/components/grid/About";
+import { Infrastructure } from "@/components/grid/Infrastructure";
+import { ArcSection } from "@/components/grid/ArcSection";
+import { Proof } from "@/components/grid/Proof";
+import { Manifesto } from "@/components/grid/Manifesto";
+import { Utilities } from "@/components/grid/Utilities";
+import { Token } from "@/components/grid/Token";
+import { Footer } from "@/components/grid/Footer";
+import { LaunchModal } from "@/components/grid/LaunchModal";
+import { LaunchProvider } from "@/components/grid/launch";
 
-// No head() here: the home route inherits title/description/og/twitter from
-// __root.tsx, and ships no og:image so serve-time hosting can inject the
-// project's social preview (explicit og:image or latest screenshot).
+const TITLE = "GRID — Autonomous Energy Grid";
+const DESC =
+  "GRID explores autonomous energy infrastructure, machine-to-machine payments, real-time data, and programmable settlement on Arc.";
+
 export const Route = createFileRoute("/")({
   component: Index,
+  head: () => ({
+    meta: [
+      { title: TITLE },
+      { name: "description", content: DESC },
+      { property: "og:title", content: TITLE },
+      { property: "og:description", content: "Energy Meets Programmable Money." },
+      { property: "og:type", content: "website" },
+      { property: "og:url", content: "/" },
+      { name: "twitter:card", content: "summary_large_image" },
+      { name: "twitter:title", content: TITLE },
+      { name: "twitter:description", content: "Energy Meets Programmable Money." },
+    ],
+    links: [{ rel: "canonical", href: "/" }],
+    scripts: [
+      {
+        type: "application/ld+json",
+        children: JSON.stringify({
+          "@context": "https://schema.org",
+          "@type": "WebSite",
+          name: "GRID — Autonomous Energy Grid",
+          description: DESC,
+        }),
+      },
+    ],
+  }),
 });
 
-// IMPORTANT: Replace this placeholder. See ./README.md for routing conventions.
 function Index() {
   return (
-    <div
-      className="flex min-h-screen items-center justify-center"
-      style={{ backgroundColor: "#fcfbf8" }}
-    >
-      <img
-        data-lovable-blank-page-placeholder="REMOVE_THIS"
-        src="https://cdn.gpteng.co/blank-app-v1.svg"
-        alt="Your app will live here!"
-      />
-    </div>
+    <LaunchProvider>
+      <Loader />
+      <Cursor />
+      <Atmosphere />
+      <div className="relative z-10">
+        <Nav />
+        <main>
+          <Hero />
+          <div className="relative bg-[oklch(0.17_0.04_263_/_0.45)]">
+            <About />
+          </div>
+          <Infrastructure />
+          <div className="relative bg-[oklch(0.13_0.032_265_/_0.55)]">
+            <ArcSection />
+            <Proof />
+          </div>
+          <Manifesto />
+          <div className="relative bg-[oklch(0.17_0.04_263_/_0.4)]">
+            <Utilities />
+          </div>
+          <Token />
+        </main>
+        <Footer />
+      </div>
+      <LaunchModal />
+      <link rel="preload" as="image" href={logo.url} />
+    </LaunchProvider>
   );
 }
