@@ -25,7 +25,7 @@ export function Reveal({
       ref={ref}
       className={className}
       initial={{ opacity: 0, y, scale: scale ?? 1 }}
-      animate={inView ? { opacity: 1, y: 0, scale: 1 } : undefined}
+      animate={inView ? { opacity: 1, y: 0, scale: 1 } : { opacity: 0, y, scale: scale ?? 1 }}
       transition={{ duration: 0.8, delay, ease: [0.16, 1, 0.3, 1] }}
     >
       {children}
@@ -41,7 +41,7 @@ export function LineDraw({ className }: { className?: string }) {
       <motion.div
         className="hairline-x h-px"
         initial={{ scaleX: 0 }}
-        animate={inView ? { scaleX: 1 } : undefined}
+        animate={inView ? { scaleX: 1 } : { scaleX: 0 }}
         style={{ transformOrigin: "left" }}
         transition={{ duration: 1.4, ease: [0.16, 1, 0.3, 1] }}
       />

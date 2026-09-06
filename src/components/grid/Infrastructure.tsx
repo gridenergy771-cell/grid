@@ -29,7 +29,7 @@ export function Infrastructure() {
           <motion.div
             key={s.n}
             initial={{ opacity: 0, y: 26 }}
-            animate={inView ? { opacity: 1, y: 0 } : undefined}
+            animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 26 }}
             transition={{ duration: 0.7, delay: i * 0.12, ease: [0.16, 1, 0.3, 1] }}
             className="group relative bg-[oklch(0.15_0.035_264)] p-7 transition-colors duration-300 hover:bg-[oklch(0.19_0.045_262)] sm:p-9"
           >

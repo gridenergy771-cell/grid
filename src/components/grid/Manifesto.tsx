@@ -15,7 +15,7 @@ function Line({ text, index }: { text: string; index: number }) {
     <motion.p
       ref={ref}
       initial={{ opacity: 0, y: 36 }}
-      animate={inView ? { opacity: 1, y: 0 } : undefined}
+      animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 36 }}
       transition={{ duration: 1, ease: [0.16, 1, 0.3, 1] }}
       className="text-[2rem] leading-[1.05] font-semibold tracking-[-0.045em] sm:text-[3.5rem] lg:text-[4.6rem]"
       style={{ color: index === LINES.length - 1 ? "var(--cyan)" : undefined }}

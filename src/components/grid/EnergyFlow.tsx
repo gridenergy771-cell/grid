@@ -57,7 +57,7 @@ export function EnergyFlow() {
                   onFocus={() => setActive(n.key)}
                   onBlur={() => setActive(null)}
                   initial={{ opacity: 0, y: 12 }}
-                  animate={inView ? { opacity: 1, y: 0 } : undefined}
+                  animate={inView ? { opacity: 1, y: 0 } : { opacity: 0, y: 12 }}
                   transition={{ duration: 0.5, delay: i * 0.14 }}
                   className={cn(
                     "grid w-full grid-cols-[minmax(0,1fr)_auto] items-start gap-4 border-l px-4 py-4 text-left transition-all duration-300",
@@ -99,7 +99,7 @@ export function EnergyFlow() {
                     <motion.div
                       className="h-full w-px bg-cyan"
                       initial={{ scaleY: 0 }}
-                      animate={inView ? { scaleY: 1 } : undefined}
+                      animate={inView ? { scaleY: 1 } : { scaleY: 0 }}
                       style={{
                         transformOrigin: "top",
                         opacity: active ? 0.9 : 0.35,
