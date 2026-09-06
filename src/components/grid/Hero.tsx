@@ -114,7 +114,9 @@ export function Hero() {
             style={{
               transform: `translate3d(${tilt.x}px, ${tilt.y}px, 0)`,
               maskImage:
-                "radial-gradient(120% 100% at 45% 50%, black 55%, transparent 92%)",
+                "radial-gradient(120% 100% at 45% 50%, black 55%, transparent 92%), linear-gradient(to right, transparent 0%, black 14%)",
+              maskComposite: "intersect",
+              WebkitMaskComposite: "source-in",
             }}
           />
         </motion.div>
